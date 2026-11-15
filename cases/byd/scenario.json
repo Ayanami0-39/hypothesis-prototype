@@ -1,0 +1,43 @@
+{
+  "kind": "illustrative_not_estimated_not_probabilistic",
+  "stations": 20000,
+  "note": "Hypothetical full-year mature network at the announced scale; not a claim of deployment or utilization as of cutoff. Per-site inputs are BYD-attributable economics, not total operator revenue. No installation ramp, tax, working capital, terminal value or vehicle spillover is included.",
+  "capital_at_risk_rmb_per_site": 1000000,
+  "life_years": 10,
+  "hurdle_rate": 0.08,
+  "fixed_cash_cost_rmb_per_site_year": 50000,
+  "illustrations": [
+    {
+      "name": "low_use",
+      "kwh_per_site_day": 1000,
+      "retained_contribution_rmb_per_kwh": 0.15
+    },
+    {
+      "name": "middle",
+      "kwh_per_site_day": 2500,
+      "retained_contribution_rmb_per_kwh": 0.3
+    },
+    {
+      "name": "high_use",
+      "kwh_per_site_day": 5000,
+      "retained_contribution_rmb_per_kwh": 0.45
+    }
+  ],
+  "grid_kwh_per_site_day": [
+    500,
+    1000,
+    2500,
+    5000
+  ],
+  "grid_retained_contribution_rmb_per_kwh": [
+    0.1,
+    0.2,
+    0.3,
+    0.45
+  ],
+  "grid_capital_at_risk_rmb_per_site": [
+    500000,
+    1000000,
+    2000000
+  ]
+}

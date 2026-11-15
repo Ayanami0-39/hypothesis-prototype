@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence-Grounded Investment Verification"
+  short_description: "Verify investment theses with auditable evidence"
+  default_prompt: "Use $investment-hypothesis-verification to assess my investment hypothesis using public evidence, explicit proxy checks, and scoped conclusions."

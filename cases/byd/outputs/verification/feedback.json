@@ -4,10 +4,10 @@
   "items": [
     {
       "channel": "executable",
-      "target": "review_schema_and_eligible_citation_ids",
+      "target": "review_structure_and_citation_eligibility",
       "label": "pass",
       "mask": 1,
-      "scope": "Structural correctness only; does not certify factual extraction or entailment"
+      "scope": "No entailment or causal certification"
     }
   ],
   "semantic_items": [
@@ -17,7 +17,7 @@
       "label_source": "assistant_authored_research_draft_not_blind_agent_evaluation",
       "mask": 0,
       "weight": null,
-      "reason": "Requires independent adjudication"
+      "requires_reassessment": false
     },
     {
       "target": "P2",
@@ -25,7 +25,7 @@
       "label_source": "assistant_authored_research_draft_not_blind_agent_evaluation",
       "mask": 0,
       "weight": null,
-      "reason": "Requires independent adjudication"
+      "requires_reassessment": false
     },
     {
       "target": "P3",
@@ -33,7 +33,7 @@
       "label_source": "assistant_authored_research_draft_not_blind_agent_evaluation",
       "mask": 0,
       "weight": null,
-      "reason": "Requires independent adjudication"
+      "requires_reassessment": false
     },
     {
       "target": "P4",
@@ -41,7 +41,7 @@
       "label_source": "assistant_authored_research_draft_not_blind_agent_evaluation",
       "mask": 0,
       "weight": null,
-      "reason": "Requires independent adjudication"
+      "requires_reassessment": false
     }
   ]
 }

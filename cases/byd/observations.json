@@ -1,0 +1,41 @@
+[
+  {
+    "id": "completed",
+    "basis": "reported",
+    "source_ids": [
+      "milestone2026"
+    ],
+    "text": "stations_company_reported",
+    "value": 10000,
+    "period": "2026-08-28",
+    "reporting_status": "reported",
+    "unit": "stations",
+    "population": "China network, company-reported; branded coverage is not full ownership"
+  },
+  {
+    "id": "target",
+    "basis": "target",
+    "source_ids": [
+      "launch2026"
+    ],
+    "text": "stations_target",
+    "value": 20000,
+    "period": "2026-12-31",
+    "reporting_status": "target",
+    "unit": "stations",
+    "population": "China network, company-reported; branded coverage is not full ownership"
+  },
+  {
+    "id": "energy",
+    "basis": "reported",
+    "source_ids": [
+      "milestone2026"
+    ],
+    "text": "cumulative_kwh_lower_bound",
+    "value": 210000000,
+    "period": "2026-08-28",
+    "reporting_status": "reported_lower_bound",
+    "unit": "kWh",
+    "population": "China network, company-reported; branded coverage is not full ownership"
+  }
+]

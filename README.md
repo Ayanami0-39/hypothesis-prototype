@@ -1,82 +1,73 @@
-# BYD investment-hypothesis prototype
+# Evidence-Grounded Verification for Investment Hypotheses
 
-一个最小、可复算的主观投资研究框架。案例问题：BYD 的闪充等资本投入，能否在 2027–2030 年形成可持续的超额经济回报？信息截止 **2026-11-15**。
+一个面向主观投资研究的通用 **agent skill + 最小离线证据工具**。将自然语言假设拆解为可审查的命题，通过公开数据、代理变量和多条证据路径形成有来源、有边界、可修订的判断。BYD 是其中一个案例，不是工具预设的研究对象。
 
-**[阅读中文分析报告](reports/BYD_OUTLOOK_ZH.md)** · [公开来源](cases/byd/sources.json) · [实际计算结果](outputs/byd/results.json)
+## 使用方式
 
-## 一分钟运行
+将 [`skills/investment-hypothesis-verification`](skills/investment-hypothesis-verification) 整个目录复制到支持 `SKILL.md` 的 agent 的 skills 目录。例如 Codex 的 `~/.codex/skills/`。该目录包含独立运行需要的全部脚本和说明，不依赖本仓库的 BYD 文件。
 
-Python 3.10+，无第三方依赖，不需要 API key，也不会发起网络请求。
+在 agent 中调用：
+
+> 使用 $investment-hypothesis-verification 分析这个投资假设：某零售商增加自动化仓储投入，会通过提高周转效率，在未来三年产生超过资本成本的增量回报。限定使用截至指定日期可获取的公开证据；审查代理效度，比较多条路径，并输出冲突解释、缺失证据和结构化反馈。
+
+请给出研究对象、假设、信息截止日期和预测期限。它也适用于定价权、用户留存、渠道扩张、研发投入、行业供需等命题；具体数据和估计方法由研究问题决定。
+
+## 工作流程
+
+1. **假设形式化**：明确对象、期限、隐含条件和模糊构念，区分描述、预测与因果命题。
+2. **证据与代理审查**：寻找公开来源，记录发布时间、口径及来源家族；检查代理是否衡量目标构念。
+3. **多路径验证**：组织经营、财务、竞争、客户或其他适用路径；检查共同来源、共同偏差和识别条件。
+4. **冲突与修订**：区分口径差异和实质矛盾；提出可区分解释的下一步取证；代理失效时追踪受影响节点。
+5. **分层反馈**：分别输出可执行检查、带来源的分析判断、未识别部分及下一步行动。未来投资结论不自动作为正确性奖励。
+
+完整规范见 [SKILL.md](skills/investment-hypothesis-verification/SKILL.md)，数据约定见 [schema](skills/investment-hypothesis-verification/references/schema.md)，研究检查见 [research checks](skills/investment-hypothesis-verification/references/research-checks.md)。
+
+## 最小工具：Python 3.10+，无第三方依赖
+
+从仓库根目录创建独立案例：
 
 ```sh
-python prototype.py
+python prototype.py init local_runs/retail --id RETAIL_AUTOMATION --as-of 2026-11-15 --horizon "2027-2029" --hypothesis "Warehouse automation creates incremental returns above the cost of capital."
+```
+
+这只生成待填写模板，不会自动完成假设拆解。由 agent 或研究员补全 `case.json`、`sources.json`、`observations.json` 后运行：
+
+```sh
+python prototype.py run --case local_runs/retail --out local_runs/retail-run
+```
+
+需要计算时，在案例目录编写并单独执行计算脚本，再通过 `--calculations calculations.json` 传入带来源的结果。工具不会自动执行案例中的代码。审查 `review_prompt.md` 后，可以将结构化分析保存为 `review.json`，使用 `--review review.json` 检查格式和引用资格。
+
+每次运行生成：
+
+| 文件 | 内容 |
+|---|---|
+| `evidence_packet.json` | 截止日期内的来源、观测、计算、代理、路径与依赖关系 |
+| `review_prompt.md` | 通用审查指令及证据包，供 agent/研究员使用 |
+| `results.json` | 输入指纹、来源筛选、失效节点与可选审查记录 |
+| `feedback.json` | 可执行检查与语义候选标签分开；未校准语义标签的训练 mask 为 0 |
+
+受控诊断支持 `--as-of YYYY-MM-DD`、`--drop-source SOURCE_ID`、`--invalidate NODE_ID`，可重复传入后两项。失效传播仅沿已声明的依赖图进行；它标记“需要重审”，不自动判定下游命题为假。删除来源后不能继续提交引用该来源的旧 review，应重新审查。
+
+## 案例：BYD 资本投入与未来超额回报
+
+[案例说明](cases/byd/README.md) · [中文研究报告](cases/byd/report.md) · [公开来源清单](cases/byd/sources.json)
+
+```sh
+python cases/byd/calculate.py
+python prototype.py run --case cases/byd --calculations cases/byd/outputs/calculations.json --review cases/byd/review.example.json --out cases/byd/outputs/verification
+```
+
+BYD 的财务转录、充电站经济性假设、48 个情景和报告均放在 `cases/byd/`。它演示“网络规模并不直接证明利润归属或未来超额回报”等代理审查。案例结论是特定截止日期的研究记录，本次架构改造不等于更新其原始数据。
+
+## 验证与范围
+
+```sh
 python -m unittest discover -s tests -v
 ```
 
-第一条命令输出证据包、情景结果、结构化反馈和供模型使用的提示文件。默认不填充任何语义结论。
+测试使用不涉及汽车或充电的合成零售案例，检查任意命题 ID、日期门控、来源依赖、局部失效、反馈隔离及 skill 独立复制运行，并对 BYD 原有数值做回归检查。合成数据仅用于软件测试，不是零售投资的实证结果。
 
-导入本项目的示范分析（保持仓库中示范输出一致）：
+**能力边界**：skill 指导宿主 agent 检索与推理；Python 工具只做离线结构、来源资格和依赖检查，不调用 LLM、不自动抓取网页、不验证引用蕴含，也不提供经过校准的因果估计或收益预测。不同路径或来源家族的数量不能当作统计独立性。详见 [RUN_SCOPE](reports/RUN_SCOPE.md)。
 
-```sh
-python prototype.py --review examples/byd_review.json
-```
-
-`examples/byd_review.json` 是本次研究中由 AI 助手编写的分析示例，**不是独立 Agent 实验结果，也不是参考真值**。运行脚本不会调用模型。它仅验证命题完整性和引用 ID/时间有效性，不验证语义正确性。
-
-## 最小工作流
-
-```text
-case.json + sources.json + financials.csv
-                 |
-                 v
-      日期过滤 / 来源记录 / 财务与情景计算
-                 |
-                 v
-      evidence_packet.json + review_prompt.md
-                 |
-        交给任意 LLM 或研究员审阅
-                 |
-                 v
-      导入 review.json -> 结构检查 -> feedback.json
-```
-
-1. 执行 `python prototype.py`。
-2. 将 `outputs/byd/review_prompt.md` 交给任意模型或研究员。提示中包含本轮已筛选证据、假设和计算。不要同时提供示范答案。
-3. 把返回的 JSON 保存到 `local_runs/review.json`。
-4. 执行 `python prototype.py --review local_runs/review.json --out local_runs/reviewed`。
-
-外部模型只看人工整理的证据包，尚不具备自主检索。未来可以接一个模型适配器；首版有意保留文件接口，避免引入模型账户、框架和部署依赖。
-
-## 可运行的诊断
-
-```sh
-# 源文件发布日期截止检查；这是来源可得性回放，不是完整的历史投资模拟。
-python prototype.py --as-of 2026-04-01 --out local_runs/early
-# 移除竞争对手证据后重新生成研究输入，再让模型重新判断。
-python prototype.py --drop-source catl2026 --out local_runs/no_competitor
-```
-
-日期过滤不自动重建历史信息全集；研究问题、情景和代理设计是在 2026-11-15 编写的。不得把这些回放标记为当时的真实预测。
-
-## 文件
-
-| 路径 | 内容 |
-|---|---|
-| `prototype.py` | 唯一运行程序；计算、日期门控、提示导出、结论导入 |
-| `cases/byd/` | 假设、来源清单、人工核对的财务输入、示意参数 |
-| `prompts/research.md` | 通用研究流程与输出格式 |
-| `examples/byd_review.json` | 明确标记作者来源的示范分析 |
-| `outputs/byd/` | 已执行的结果、48 行情景网格、输入哈希和反馈 |
-| `reports/` | 中文研究报告及运行范围 |
-| `tests/` | 10 项实现测试，不是投资假设验证成功率 |
-
-## 结果与边界
-
-- “集团购建长期资产现金支出”不等于“闪充资本开支”；现金流残差不等于股东自由现金流。
-- 公司公布的累计充电量不能除以期末站数就作为成熟站利用率。
-- 场景中的投资、留存边际收益、年限和资本成本是**示意输入**，不是 BYD 已披露数据，不分配概率。
-- 同源文件不视为独立复制。6 个文件属于 BYD 和 CATL 两个上游来源家族，后者也是供应商自述。
-- 未独立复核的语义反馈 `mask=0`，不自动投入训练。
-- 尚未进行模型比较、微调、因果估计或股票回测。本报告讨论经营假设，不给出目标价或交易建议。
-
-本仓库只保存原创代码、分析、必要的数据点与来源链接，不转载完整报告、图片、私人笔记或账户凭据。代码采用 MIT 许可；原始第三方材料的权利归其所有者。
+许可证：[MIT](LICENSE)。

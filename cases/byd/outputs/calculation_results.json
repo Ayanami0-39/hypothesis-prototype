@@ -1,30 +1,5 @@
 {
-  "case_id": "BYD_FLASH_CHARGING_2026",
-  "as_of": "2026-11-15",
-  "execution": "offline_calculation_and_review_validation; no model was called",
-  "input_sha256": {
-    "case.json": "6a78fef7998d0da1fc104336ac43e678a40d65268c2ac923243e78cce3b88622",
-    "sources.json": "815598a1fc3722bc7347e82f7a4611fe75798845e70d19a79738b79e4dbba704",
-    "financials.csv": "9eba1573da54844e34269e3997fb176463eb22e94d1d32a7b781413004128123",
-    "prototype.py": "29eeed8306debcc1418c0b6b9d6e270a93c604b124e49db8d1dfb507864aa6a1",
-    "research.md": "beee50264c1df3902e3e4b109df2a5528a3b8eb81d3859d9cbc5e57e2d6ed2fe",
-    "review_input": "769dbef1bd82e209a6c95ed104c675b9d2c4bf9af890689ddbda34ad6a94cc65"
-  },
-  "source_gate": {
-    "accepted": [
-      "annual2025",
-      "catl2026",
-      "launch2026",
-      "milestone2026",
-      "q3_2026",
-      "uk_faq"
-    ],
-    "excluded": [],
-    "families": [
-      "BYD",
-      "CATL"
-    ]
-  },
+  "execution": "BYD_specific_deterministic_calculation_no_model",
   "financials": {
     "rows": [
       {
@@ -747,107 +722,9 @@
       "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
     }
   ],
-  "utilization_estimate": null,
-  "utilization_reason": "Cumulative energy and end-date station count do not supply operating station-days or station cohorts.",
-  "review": {
-    "authoring_mode": "assistant_authored_research_draft_not_blind_agent_evaluation",
-    "assessments": [
-      {
-        "proposition_id": "P1",
-        "status": "partial",
-        "citation_ids": [
-          "annual2025",
-          "q3_2026",
-          "launch2026",
-          "milestone2026"
-        ],
-        "reason": "Group investment is large and company-reported deployment is real evidence of scale. But nine-month 2026 asset cash purchases declined YoY, and the reviewed sources do not isolate BYD-owned charging capex.",
-        "missing_evidence": [
-          "Charging-specific cash investment and ownership contracts"
-        ]
-      },
-      {
-        "proposition_id": "P2",
-        "status": "partial",
-        "citation_ids": [
-          "milestone2026",
-          "uk_faq"
-        ],
-        "reason": "Reported use and broader compatibility support customer interest; incremental vehicle sales, willingness to pay and mature utilization are not identified.",
-        "missing_evidence": [
-          "Station-day panel",
-          "Matched customer/vehicle market comparison",
-          "Retention after subsidies expire"
-        ]
-      },
-      {
-        "proposition_id": "P3",
-        "status": "unresolved",
-        "citation_ids": [
-          "launch2026",
-          "uk_faq",
-          "catl2026"
-        ],
-        "reason": "An open partner-built ecosystem can grow rapidly but does not establish exclusive control or retained economic rents. Competing fast-charging routes exist; comparative field performance remains unverified.",
-        "missing_evidence": [
-          "Retained cash margin",
-          "Capital responsibility",
-          "Competitive substitution",
-          "Persistent incremental ROIC"
-        ]
-      },
-      {
-        "proposition_id": "P4",
-        "status": "unresolved",
-        "citation_ids": [
-          "annual2025",
-          "q3_2026"
-        ],
-        "reason": "Cash investment burden and quarterly recovery can coexist. No causal attribution to charging or valuation comparison is available. 2027-2030 outcomes have not resolved.",
-        "missing_evidence": [
-          "Incremental cash-flow attribution",
-          "Funding and maintenance schedule",
-          "Valuation and dilution assumptions"
-        ]
-      }
-    ],
-    "conflicts": [
-      {
-        "description": "Q3 profit recovered while nine-month profit declined",
-        "explanation": "Different observation windows; both can be correct. A consensus forecast miss is not established by YoY changes.",
-        "status": "resolved_scope",
-        "citation_ids": [
-          "q3_2026"
-        ]
-      },
-      {
-        "description": "Charging rollout grew while year-to-date group asset cash purchases declined",
-        "explanation": "Group spending versus network count and annual versus partial-year comparisons differ. Partner construction and investment timing are plausible contributors, but their quantitative contribution is unknown.",
-        "status": "unresolved",
-        "citation_ids": [
-          "annual2025",
-          "q3_2026",
-          "launch2026",
-          "milestone2026"
-        ]
-      },
-      {
-        "description": "Open access may increase traffic but reduce exclusivity",
-        "explanation": "Traffic effects and profit capture are different targets. Openness does not rule out economic rents, but neither scale nor third-party usage proves them.",
-        "status": "unresolved",
-        "citation_ids": [
-          "milestone2026",
-          "uk_faq",
-          "catl2026"
-        ]
-      }
-    ],
-    "next_actions": [
-      "Collect operating station-days and monthly delivered kWh by station vintage; exclude promotions when measuring paid retention.",
-      "Obtain representative operator agreements to separate capex funding, asset ownership, net service-fee share and replacement obligations.",
-      "Compare matched city/model cohorts before and after effective coverage, while checking rollout selection, parallel trends, subsidies and competitor launches.",
-      "Track 2027-2030 incremental capital returns and vehicle contribution after charging subsidies; avoid double-counting benefits."
-    ]
-  },
-  "thesis_truth_label": null
+  "input_sha256": {
+    "financials.csv": "9eba1573da54844e34269e3997fb176463eb22e94d1d32a7b781413004128123",
+    "scenario.json": "6cb252f178d0f69f1bbe63144714e0274c56f1f19ffc882a003c5772ba46b6aa",
+    "calculate.py": "eb688381ac29c2319dc796ee3931806dffb0cfc5e3cf231f6cd45922657aa21a"
+  }
 }

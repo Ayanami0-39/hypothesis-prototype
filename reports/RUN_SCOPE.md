@@ -1,14 +1,25 @@
-# Execution record
+# Execution scope
 
-- Research information cutoff and run date: 2026-11-15 (Asia/Singapore).
-- Exploratory, retrospective public-source review; no preregistered investment prediction.
-- Runtime: Python 3.12; standard library only. Supported Python: 3.10+.
-- Command: `python prototype.py --review examples/byd_review.json`.
-- Implementation checks: `python -m unittest discover -s tests -v` (10 passed).
-- Six public source records; two upstream source families (BYD and CATL).
-- 48 illustrative parameter combinations, not independent economic observations.
-- No external LLM API called by the executable. The example assessment and report are assistant-authored research artifacts. No blind trial, baseline comparison, model training, or calibrated truth reward.
-- The initial test invocation hit an environment temporary-directory permission problem. Tests now use a temporary directory inside the ignored local_runs directory; the complete suite then passed.
-- Inputs were already researched before scenario design. Scenario settings are exploratory assumptions, not precommitted estimands or market estimates.
-- Publication includes only project files; no credentials, local browser history, private proposal text, or private user files.
-- Re-running the default command without --review intentionally yields no semantic assessment. Use the reproduction command above to regenerate the committed demonstration.
+The reusable artifact is `skills/investment-hypothesis-verification/`. It contains a research workflow for the host agent and a Python standard-library helper. The root `prototype.py` delegates to that helper. BYD-specific data, formulas, review and report live under `cases/byd/`.
+
+## What actually runs
+
+- Local parsing, explicit source-date eligibility, source-lineage filtering, dependency validation and downstream invalidation.
+- Validation of a supplied review's structure and eligible citation IDs; no semantic entailment certification.
+- Input SHA-256 fingerprints and machine-readable evidence, diagnostic and feedback outputs.
+- Separately invoked BYD financial arithmetic, capital-recovery calculations and a 48-row illustrative sensitivity grid.
+
+The helper makes no model or network calls. A supplied review remains attributed to its declared authoring mode. The skill instructs the host agent to perform research and interpretation; it is not evidence of a tested autonomous research system. Source publication dates and families are declared records, not independently authenticated by the helper.
+
+## Verification protocol
+
+`python -m unittest discover -s tests -v` exercises a synthetic retail hypothesis with arbitrary proposition IDs, date/lineage filtering, invalid and incomplete reviews, cycle rejection, selective invalidation, masked semantic labels and a standalone copied skill. These are software diagnostics, not empirical investment-validation performance. Separate BYD regressions check preservation of previous arithmetic and missing-value behavior.
+
+## Interpretation limits
+
+- Source eligibility is necessary but insufficient for historical availability: vintage, revisions, observation dates and later interpretation still require audit.
+- Distinct source families or pathways do not prove statistical independence. No p-values or e-values are aggregated.
+- Dependency edges are analyst-declared, not learned causal edges. Missing edges prevent complete invalidation propagation.
+- Schema-valid reviews may still be economically wrong. Executable feedback targets format and citation eligibility only; semantic candidate labels have mask 0 and no calibrated weight.
+- An illustrative calculation without source references is permitted only with explicit assumptions. It does not become empirical evidence by entering the packet.
+- The BYD case is a preserved dated case study. Refactoring the repository does not refresh its underlying public disclosures or establish future excess returns.

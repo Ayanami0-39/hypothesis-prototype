@@ -1,41 +1,103 @@
 {
-  "id":"BYD_FLASH_CHARGING_2026",
-  "as_of":"2026-11-15",
-  "horizon":"2027-2030; prospective outcomes remain unresolved",
-  "hypothesis":"BYD's large current capital investments, especially flash charging infrastructure, will produce durable future monopoly-like income despite near-term disappointing performance.",
-  "interpretation":"Monopoly-like income means durable excess economic returns attributable to the investment, not merely charging revenue or legal monopoly status. No consensus-expectations dataset is supplied, so disappointing performance is tested only as explicitly dated reported changes.",
-  "propositions":[
-    {"id":"P1","claim":"Investment and charging-network deployment are substantial.","obligations":["Separate group cash investment from charging-specific spending","Separate plans from completed stations and stations from connectors"]},
-    {"id":"P2","claim":"The infrastructure produces persistent customer value and improved BYD vehicle economics.","obligations":["Measure accessible effective charging time, availability and cohort use","Identify incremental vehicle demand or margin against a credible counterfactual"]},
-    {"id":"P3","claim":"BYD captures durable above-normal returns from that value.","obligations":["Observe ownership, contracts and retained cash margins","Account for competitors, customer substitution, capital cost and maintenance"]},
-    {"id":"P4","claim":"The investment improves shareholder value over 2027-2030.","obligations":["Avoid double-counting charging benefits already in vehicle margin","Observe returns on incremental invested capital and funding needs","Separate enterprise success from the price paid for shares"]}
+  "id": "BYD_FLASH_CHARGING_2026",
+  "as_of": "2026-11-15",
+  "horizon": "2027-2030; prospective outcomes remain unresolved",
+  "hypothesis": "BYD's large current capital investments, especially flash charging infrastructure, will produce durable future monopoly-like income despite near-term disappointing performance.",
+  "interpretation": "Monopoly-like income means durable excess economic returns attributable to the investment, not merely charging revenue or legal monopoly status. No consensus-expectations dataset is supplied, so disappointing performance is tested only as explicitly dated reported changes.",
+  "propositions": [
+    {
+      "id": "P1",
+      "claim": "Investment and charging-network deployment are substantial.",
+      "obligations": [
+        "Separate group cash investment from charging-specific spending",
+        "Separate plans from completed stations and stations from connectors"
+      ]
+    },
+    {
+      "id": "P2",
+      "claim": "The infrastructure produces persistent customer value and improved BYD vehicle economics.",
+      "obligations": [
+        "Measure accessible effective charging time, availability and cohort use",
+        "Identify incremental vehicle demand or margin against a credible counterfactual"
+      ]
+    },
+    {
+      "id": "P3",
+      "claim": "BYD captures durable above-normal returns from that value.",
+      "obligations": [
+        "Observe ownership, contracts and retained cash margins",
+        "Account for competitors, customer substitution, capital cost and maintenance"
+      ]
+    },
+    {
+      "id": "P4",
+      "claim": "The investment improves shareholder value over 2027-2030.",
+      "obligations": [
+        "Avoid double-counting charging benefits already in vehicle margin",
+        "Observe returns on incremental invested capital and funding needs",
+        "Separate enterprise success from the price paid for shares"
+      ]
+    }
   ],
-  "paths":[
-    {"id":"deployment","source_ids":["launch2026","milestone2026","uk_faq"],"target":"deployment, usability and value capture","limitations":"Shared BYD source family; missing station-day exposure and signed revenue-sharing contracts"},
-    {"id":"financial","source_ids":["annual2025","q3_2026"],"target":"funding burden and trend","limitations":"Group aggregate; no charging segment causal attribution"},
-    {"id":"competition","source_ids":["catl2026","uk_faq"],"target":"durability and exclusivity","limitations":"Supplier announcements are not comparable independent field tests"}
+  "paths": [
+    {
+      "id": "deployment",
+      "source_ids": [
+        "launch2026",
+        "milestone2026",
+        "uk_faq"
+      ],
+      "target": "deployment, usability and value capture",
+      "limitations": "Shared BYD source family; missing station-day exposure and signed revenue-sharing contracts"
+    },
+    {
+      "id": "financial",
+      "source_ids": [
+        "annual2025",
+        "q3_2026"
+      ],
+      "target": "funding burden and trend",
+      "limitations": "Group aggregate; no charging segment causal attribution"
+    },
+    {
+      "id": "competition",
+      "source_ids": [
+        "catl2026",
+        "uk_faq"
+      ],
+      "target": "durability and exclusivity",
+      "limitations": "Supplier announcements are not comparable independent field tests"
+    }
   ],
-  "network_observations":[
-    {"id":"completed","source_id":"milestone2026","as_of":"2026-08-28","metric":"stations_company_reported","value":10000,"status":"reported"},
-    {"id":"target","source_id":"launch2026","as_of":"2026-12-31","metric":"stations_target","value":20000,"status":"target"},
-    {"id":"energy","source_id":"milestone2026","as_of":"2026-08-28","metric":"cumulative_kwh_lower_bound","value":210000000,"status":"reported_lower_bound"}
+  "missing_data": [
+    "Charging-specific capex and ownership shares",
+    "Operating station-days and mature cohort throughput",
+    "Net service margin retained by BYD after partners and subsidies",
+    "Maintenance and storage replacement cost",
+    "City/model-level untreated comparison for incremental vehicle profit",
+    "Consensus forecasts frozen before each earnings announcement"
   ],
-  "missing_data":["Charging-specific capex and ownership shares","Operating station-days and mature cohort throughput","Net service margin retained by BYD after partners and subsidies","Maintenance and storage replacement cost","City/model-level untreated comparison for incremental vehicle profit","Consensus forecasts frozen before each earnings announcement"],
-  "scenario_assumptions":{
-    "kind":"illustrative_not_estimated_not_probabilistic",
-    "stations":20000,
-    "note":"Hypothetical full-year mature network at the announced scale; not a claim of deployment or utilization as of cutoff. Per-site inputs are BYD-attributable economics, not total operator revenue. No installation ramp, tax, working capital, terminal value or vehicle spillover is included.",
-    "capital_at_risk_rmb_per_site":1000000,
-    "life_years":10,
-    "hurdle_rate":0.08,
-    "fixed_cash_cost_rmb_per_site_year":50000,
-    "illustrations":[
-      {"name":"low_use","kwh_per_site_day":1000,"retained_contribution_rmb_per_kwh":0.15},
-      {"name":"middle","kwh_per_site_day":2500,"retained_contribution_rmb_per_kwh":0.30},
-      {"name":"high_use","kwh_per_site_day":5000,"retained_contribution_rmb_per_kwh":0.45}
+  "schema_version": 2,
+  "measurements": [
+    {
+      "id": "M_owned_network",
+      "construct": "capital ownership and profit capture",
+      "proxy": "company-branded station count",
+      "limitations": "Partner agreements and capital attribution are required; this edge is a candidate inference, not an established valid mapping"
+    }
+  ],
+  "dependencies": [
+    [
+      "completed",
+      "M_owned_network"
     ],
-    "grid_kwh_per_site_day":[500,1000,2500,5000],
-    "grid_retained_contribution_rmb_per_kwh":[0.10,0.20,0.30,0.45],
-    "grid_capital_at_risk_rmb_per_site":[500000,1000000,2000000]
-  }
+    [
+      "M_owned_network",
+      "P3"
+    ],
+    [
+      "P3",
+      "P4"
+    ]
+  ]
 }
