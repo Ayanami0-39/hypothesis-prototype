@@ -1,0 +1,853 @@
+{
+  "case_id": "BYD_FLASH_CHARGING_2026",
+  "as_of": "2026-11-15",
+  "execution": "offline_calculation_and_review_validation; no model was called",
+  "input_sha256": {
+    "case.json": "6a78fef7998d0da1fc104336ac43e678a40d65268c2ac923243e78cce3b88622",
+    "sources.json": "815598a1fc3722bc7347e82f7a4611fe75798845e70d19a79738b79e4dbba704",
+    "financials.csv": "9eba1573da54844e34269e3997fb176463eb22e94d1d32a7b781413004128123",
+    "prototype.py": "29eeed8306debcc1418c0b6b9d6e270a93c604b124e49db8d1dfb507864aa6a1",
+    "research.md": "beee50264c1df3902e3e4b109df2a5528a3b8eb81d3859d9cbc5e57e2d6ed2fe",
+    "review_input": "769dbef1bd82e209a6c95ed104c675b9d2c4bf9af890689ddbda34ad6a94cc65"
+  },
+  "source_gate": {
+    "accepted": [
+      "annual2025",
+      "catl2026",
+      "launch2026",
+      "milestone2026",
+      "q3_2026",
+      "uk_faq"
+    ],
+    "excluded": [],
+    "families": [
+      "BYD",
+      "CATL"
+    ]
+  },
+  "financials": {
+    "rows": [
+      {
+        "revenue_rmb_bn": 777.102455,
+        "attributable_profit_rmb_bn": 40.254346,
+        "operating_cash_flow_rmb_bn": 133.453873,
+        "long_term_asset_cash_purchases_rmb_bn": 97.359768,
+        "period": "FY2024",
+        "source_id": "annual2025",
+        "ocf_less_asset_cash_purchases_rmb_bn": 36.094104999999985
+      },
+      {
+        "revenue_rmb_bn": 803.964958,
+        "attributable_profit_rmb_bn": 32.619022,
+        "operating_cash_flow_rmb_bn": 59.135544,
+        "long_term_asset_cash_purchases_rmb_bn": 156.807853,
+        "period": "FY2025",
+        "source_id": "annual2025",
+        "ocf_less_asset_cash_purchases_rmb_bn": -97.67230899999998
+      },
+      {
+        "revenue_rmb_bn": null,
+        "attributable_profit_rmb_bn": 23.333173,
+        "operating_cash_flow_rmb_bn": 40.845498,
+        "long_term_asset_cash_purchases_rmb_bn": 114.933284,
+        "period": "9M2025",
+        "source_id": "q3_2026",
+        "ocf_less_asset_cash_purchases_rmb_bn": -74.087786
+      },
+      {
+        "revenue_rmb_bn": 566.303672,
+        "attributable_profit_rmb_bn": 22.344978,
+        "operating_cash_flow_rmb_bn": 54.469572,
+        "long_term_asset_cash_purchases_rmb_bn": 87.379038,
+        "period": "9M2026",
+        "source_id": "q3_2026",
+        "ocf_less_asset_cash_purchases_rmb_bn": -32.909465999999995
+      },
+      {
+        "revenue_rmb_bn": 194.984598,
+        "attributable_profit_rmb_bn": 7.82264,
+        "operating_cash_flow_rmb_bn": null,
+        "long_term_asset_cash_purchases_rmb_bn": null,
+        "period": "Q3_2025",
+        "source_id": "annual2025",
+        "ocf_less_asset_cash_purchases_rmb_bn": null
+      },
+      {
+        "revenue_rmb_bn": 221.488251,
+        "attributable_profit_rmb_bn": 10.01957,
+        "operating_cash_flow_rmb_bn": null,
+        "long_term_asset_cash_purchases_rmb_bn": null,
+        "period": "Q3_2026",
+        "source_id": "q3_2026",
+        "ocf_less_asset_cash_purchases_rmb_bn": null
+      }
+    ],
+    "comparisons": [
+      {
+        "old": "FY2024",
+        "new": "FY2025",
+        "metric": "revenue_rmb_bn",
+        "change_pct": 3.4567517869957154
+      },
+      {
+        "old": "FY2024",
+        "new": "FY2025",
+        "metric": "attributable_profit_rmb_bn",
+        "change_pct": -18.967701027859196
+      },
+      {
+        "old": "FY2024",
+        "new": "FY2025",
+        "metric": "long_term_asset_cash_purchases_rmb_bn",
+        "change_pct": 61.060216371920674
+      },
+      {
+        "old": "9M2025",
+        "new": "9M2026",
+        "metric": "attributable_profit_rmb_bn",
+        "change_pct": -4.235150530105781
+      },
+      {
+        "old": "9M2025",
+        "new": "9M2026",
+        "metric": "long_term_asset_cash_purchases_rmb_bn",
+        "change_pct": -23.97412223947243
+      },
+      {
+        "old": "Q3_2025",
+        "new": "Q3_2026",
+        "metric": "revenue_rmb_bn",
+        "change_pct": 13.592690536510975
+      },
+      {
+        "old": "Q3_2025",
+        "new": "Q3_2026",
+        "metric": "attributable_profit_rmb_bn",
+        "change_pct": 28.084252886493566
+      }
+    ],
+    "warning": "Group-level descriptive cash proxy; not charging capex, not FCFE, and not causal attribution. Missing cells remain null."
+  },
+  "scenarios": [
+    {
+      "name": "low_use",
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.15,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 4750.0,
+      "annual_levelized_surplus_rmb_per_site": -144279.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -2.885589773941507,
+      "break_even_kwh_per_site_day": 3635.2418026863074,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "name": "middle",
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 223750.0,
+      "annual_levelized_surplus_rmb_per_site": 74720.51130292466,
+      "annual_network_levelized_surplus_rmb_bn": 1.494410226058493,
+      "break_even_kwh_per_site_day": 1817.6209013431537,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "name": "high_use",
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 771250.0,
+      "annual_levelized_surplus_rmb_per_site": 622220.5113029247,
+      "annual_network_levelized_surplus_rmb_bn": 12.444410226058494,
+      "break_even_kwh_per_site_day": 1211.7472675621025,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    }
+  ],
+  "grid": [
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": -31750.0,
+      "annual_levelized_surplus_rmb_per_site": -106264.74434853767,
+      "annual_network_levelized_surplus_rmb_bn": -2.1252948869707535,
+      "break_even_kwh_per_site_day": 3411.362858864046,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": -13500.0,
+      "annual_levelized_surplus_rmb_per_site": -88014.74434853767,
+      "annual_network_levelized_surplus_rmb_bn": -1.7602948869707535,
+      "break_even_kwh_per_site_day": 1705.681429432023,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 4750.0,
+      "annual_levelized_surplus_rmb_per_site": -69764.74434853767,
+      "annual_network_levelized_surplus_rmb_bn": -1.3952948869707533,
+      "break_even_kwh_per_site_day": 1137.120952954682,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 32125.0,
+      "annual_levelized_surplus_rmb_per_site": -42389.74434853767,
+      "annual_network_levelized_surplus_rmb_bn": -0.8477948869707534,
+      "break_even_kwh_per_site_day": 758.0806353031213,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": -13500.0,
+      "annual_levelized_surplus_rmb_per_site": -88014.74434853767,
+      "annual_network_levelized_surplus_rmb_bn": -1.7602948869707535,
+      "break_even_kwh_per_site_day": 3411.362858864046,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 23000.0,
+      "annual_levelized_surplus_rmb_per_site": -51514.74434853767,
+      "annual_network_levelized_surplus_rmb_bn": -1.0302948869707533,
+      "break_even_kwh_per_site_day": 1705.681429432023,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 59500.0,
+      "annual_levelized_surplus_rmb_per_site": -15014.744348537672,
+      "annual_network_levelized_surplus_rmb_bn": -0.3002948869707534,
+      "break_even_kwh_per_site_day": 1137.120952954682,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 114250.0,
+      "annual_levelized_surplus_rmb_per_site": 39735.25565146233,
+      "annual_network_levelized_surplus_rmb_bn": 0.7947051130292466,
+      "break_even_kwh_per_site_day": 758.0806353031213,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 41250.0,
+      "annual_levelized_surplus_rmb_per_site": -33264.74434853767,
+      "annual_network_levelized_surplus_rmb_bn": -0.6652948869707535,
+      "break_even_kwh_per_site_day": 3411.362858864046,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 132500.0,
+      "annual_levelized_surplus_rmb_per_site": 57985.25565146233,
+      "annual_network_levelized_surplus_rmb_bn": 1.1597051130292466,
+      "break_even_kwh_per_site_day": 1705.681429432023,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 223750.0,
+      "annual_levelized_surplus_rmb_per_site": 149235.25565146233,
+      "annual_network_levelized_surplus_rmb_bn": 2.9847051130292463,
+      "break_even_kwh_per_site_day": 1137.120952954682,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 360625.0,
+      "annual_levelized_surplus_rmb_per_site": 286110.25565146236,
+      "annual_network_levelized_surplus_rmb_bn": 5.722205113029247,
+      "break_even_kwh_per_site_day": 758.0806353031213,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 132500.0,
+      "annual_levelized_surplus_rmb_per_site": 57985.25565146233,
+      "annual_network_levelized_surplus_rmb_bn": 1.1597051130292466,
+      "break_even_kwh_per_site_day": 3411.362858864046,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 315000.0,
+      "annual_levelized_surplus_rmb_per_site": 240485.25565146233,
+      "annual_network_levelized_surplus_rmb_bn": 4.8097051130292465,
+      "break_even_kwh_per_site_day": 1705.681429432023,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 497500.0,
+      "annual_levelized_surplus_rmb_per_site": 422985.25565146236,
+      "annual_network_levelized_surplus_rmb_bn": 8.459705113029248,
+      "break_even_kwh_per_site_day": 1137.120952954682,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 500000,
+      "annual_capital_recovery_rmb_per_site": 74514.74434853767,
+      "annual_operating_cash_before_capital_rmb_per_site": 771250.0,
+      "annual_levelized_surplus_rmb_per_site": 696735.2556514624,
+      "annual_network_levelized_surplus_rmb_bn": 13.934705113029247,
+      "break_even_kwh_per_site_day": 758.0806353031213,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": -31750.0,
+      "annual_levelized_surplus_rmb_per_site": -180779.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -3.615589773941507,
+      "break_even_kwh_per_site_day": 5452.862704029461,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": -13500.0,
+      "annual_levelized_surplus_rmb_per_site": -162529.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -3.250589773941507,
+      "break_even_kwh_per_site_day": 2726.4313520147307,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 4750.0,
+      "annual_levelized_surplus_rmb_per_site": -144279.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -2.885589773941507,
+      "break_even_kwh_per_site_day": 1817.6209013431537,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 32125.0,
+      "annual_levelized_surplus_rmb_per_site": -116904.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -2.338089773941507,
+      "break_even_kwh_per_site_day": 1211.7472675621025,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": -13500.0,
+      "annual_levelized_surplus_rmb_per_site": -162529.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -3.250589773941507,
+      "break_even_kwh_per_site_day": 5452.862704029461,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 23000.0,
+      "annual_levelized_surplus_rmb_per_site": -126029.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -2.520589773941507,
+      "break_even_kwh_per_site_day": 2726.4313520147307,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 59500.0,
+      "annual_levelized_surplus_rmb_per_site": -89529.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -1.7905897739415069,
+      "break_even_kwh_per_site_day": 1817.6209013431537,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 114250.0,
+      "annual_levelized_surplus_rmb_per_site": -34779.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -0.6955897739415069,
+      "break_even_kwh_per_site_day": 1211.7472675621025,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 41250.0,
+      "annual_levelized_surplus_rmb_per_site": -107779.48869707534,
+      "annual_network_levelized_surplus_rmb_bn": -2.155589773941507,
+      "break_even_kwh_per_site_day": 5452.862704029461,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 132500.0,
+      "annual_levelized_surplus_rmb_per_site": -16529.488697075343,
+      "annual_network_levelized_surplus_rmb_bn": -0.33058977394150685,
+      "break_even_kwh_per_site_day": 2726.4313520147307,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 223750.0,
+      "annual_levelized_surplus_rmb_per_site": 74720.51130292466,
+      "annual_network_levelized_surplus_rmb_bn": 1.494410226058493,
+      "break_even_kwh_per_site_day": 1817.6209013431537,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 360625.0,
+      "annual_levelized_surplus_rmb_per_site": 211595.51130292466,
+      "annual_network_levelized_surplus_rmb_bn": 4.231910226058493,
+      "break_even_kwh_per_site_day": 1211.7472675621025,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 132500.0,
+      "annual_levelized_surplus_rmb_per_site": -16529.488697075343,
+      "annual_network_levelized_surplus_rmb_bn": -0.33058977394150685,
+      "break_even_kwh_per_site_day": 5452.862704029461,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 315000.0,
+      "annual_levelized_surplus_rmb_per_site": 165970.51130292466,
+      "annual_network_levelized_surplus_rmb_bn": 3.3194102260584932,
+      "break_even_kwh_per_site_day": 2726.4313520147307,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 497500.0,
+      "annual_levelized_surplus_rmb_per_site": 348470.51130292466,
+      "annual_network_levelized_surplus_rmb_bn": 6.969410226058493,
+      "break_even_kwh_per_site_day": 1817.6209013431537,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 1000000,
+      "annual_capital_recovery_rmb_per_site": 149029.48869707534,
+      "annual_operating_cash_before_capital_rmb_per_site": 771250.0,
+      "annual_levelized_surplus_rmb_per_site": 622220.5113029247,
+      "annual_network_levelized_surplus_rmb_bn": 12.444410226058494,
+      "break_even_kwh_per_site_day": 1211.7472675621025,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": -31750.0,
+      "annual_levelized_surplus_rmb_per_site": -329808.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -6.596179547883014,
+      "break_even_kwh_per_site_day": 9535.862394360292,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": -13500.0,
+      "annual_levelized_surplus_rmb_per_site": -311558.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -6.231179547883014,
+      "break_even_kwh_per_site_day": 4767.931197180146,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 4750.0,
+      "annual_levelized_surplus_rmb_per_site": -293308.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -5.866179547883013,
+      "break_even_kwh_per_site_day": 3178.620798120098,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 500,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 32125.0,
+      "annual_levelized_surplus_rmb_per_site": -265933.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -5.318679547883014,
+      "break_even_kwh_per_site_day": 2119.080532080065,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": -13500.0,
+      "annual_levelized_surplus_rmb_per_site": -311558.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -6.231179547883014,
+      "break_even_kwh_per_site_day": 9535.862394360292,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 23000.0,
+      "annual_levelized_surplus_rmb_per_site": -275058.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -5.501179547883014,
+      "break_even_kwh_per_site_day": 4767.931197180146,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 59500.0,
+      "annual_levelized_surplus_rmb_per_site": -238558.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -4.771179547883014,
+      "break_even_kwh_per_site_day": 3178.620798120098,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 1000,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 114250.0,
+      "annual_levelized_surplus_rmb_per_site": -183808.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -3.676179547883014,
+      "break_even_kwh_per_site_day": 2119.080532080065,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 41250.0,
+      "annual_levelized_surplus_rmb_per_site": -256808.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -5.136179547883014,
+      "break_even_kwh_per_site_day": 9535.862394360292,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 132500.0,
+      "annual_levelized_surplus_rmb_per_site": -165558.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -3.3111795478830137,
+      "break_even_kwh_per_site_day": 4767.931197180146,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 223750.0,
+      "annual_levelized_surplus_rmb_per_site": -74308.97739415069,
+      "annual_network_levelized_surplus_rmb_bn": -1.4861795478830138,
+      "break_even_kwh_per_site_day": 3178.620798120098,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 2500,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 360625.0,
+      "annual_levelized_surplus_rmb_per_site": 62566.02260584931,
+      "annual_network_levelized_surplus_rmb_bn": 1.2513204521169863,
+      "break_even_kwh_per_site_day": 2119.080532080065,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.1,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 132500.0,
+      "annual_levelized_surplus_rmb_per_site": -165558.9773941507,
+      "annual_network_levelized_surplus_rmb_bn": -3.3111795478830137,
+      "break_even_kwh_per_site_day": 9535.862394360292,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.2,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 315000.0,
+      "annual_levelized_surplus_rmb_per_site": 16941.022605849314,
+      "annual_network_levelized_surplus_rmb_bn": 0.33882045211698625,
+      "break_even_kwh_per_site_day": 4767.931197180146,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.3,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 497500.0,
+      "annual_levelized_surplus_rmb_per_site": 199441.0226058493,
+      "annual_network_levelized_surplus_rmb_bn": 3.988820452116986,
+      "break_even_kwh_per_site_day": 3178.620798120098,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    },
+    {
+      "stations_assumed": 20000,
+      "daily_kwh_assumed": 5000,
+      "retained_margin_rmb_per_kwh_assumed": 0.45,
+      "capital_at_risk_rmb_per_site_assumed": 2000000,
+      "annual_capital_recovery_rmb_per_site": 298058.9773941507,
+      "annual_operating_cash_before_capital_rmb_per_site": 771250.0,
+      "annual_levelized_surplus_rmb_per_site": 473191.0226058493,
+      "annual_network_levelized_surplus_rmb_bn": 9.463820452116986,
+      "break_even_kwh_per_site_day": 2119.080532080065,
+      "interpretation": "illustrative_constant_mature_use_not_forecast_not_net_profit"
+    }
+  ],
+  "utilization_estimate": null,
+  "utilization_reason": "Cumulative energy and end-date station count do not supply operating station-days or station cohorts.",
+  "review": {
+    "authoring_mode": "assistant_authored_research_draft_not_blind_agent_evaluation",
+    "assessments": [
+      {
+        "proposition_id": "P1",
+        "status": "partial",
+        "citation_ids": [
+          "annual2025",
+          "q3_2026",
+          "launch2026",
+          "milestone2026"
+        ],
+        "reason": "Group investment is large and company-reported deployment is real evidence of scale. But nine-month 2026 asset cash purchases declined YoY, and the reviewed sources do not isolate BYD-owned charging capex.",
+        "missing_evidence": [
+          "Charging-specific cash investment and ownership contracts"
+        ]
+      },
+      {
+        "proposition_id": "P2",
+        "status": "partial",
+        "citation_ids": [
+          "milestone2026",
+          "uk_faq"
+        ],
+        "reason": "Reported use and broader compatibility support customer interest; incremental vehicle sales, willingness to pay and mature utilization are not identified.",
+        "missing_evidence": [
+          "Station-day panel",
+          "Matched customer/vehicle market comparison",
+          "Retention after subsidies expire"
+        ]
+      },
+      {
+        "proposition_id": "P3",
+        "status": "unresolved",
+        "citation_ids": [
+          "launch2026",
+          "uk_faq",
+          "catl2026"
+        ],
+        "reason": "An open partner-built ecosystem can grow rapidly but does not establish exclusive control or retained economic rents. Competing fast-charging routes exist; comparative field performance remains unverified.",
+        "missing_evidence": [
+          "Retained cash margin",
+          "Capital responsibility",
+          "Competitive substitution",
+          "Persistent incremental ROIC"
+        ]
+      },
+      {
+        "proposition_id": "P4",
+        "status": "unresolved",
+        "citation_ids": [
+          "annual2025",
+          "q3_2026"
+        ],
+        "reason": "Cash investment burden and quarterly recovery can coexist. No causal attribution to charging or valuation comparison is available. 2027-2030 outcomes have not resolved.",
+        "missing_evidence": [
+          "Incremental cash-flow attribution",
+          "Funding and maintenance schedule",
+          "Valuation and dilution assumptions"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "description": "Q3 profit recovered while nine-month profit declined",
+        "explanation": "Different observation windows; both can be correct. A consensus forecast miss is not established by YoY changes.",
+        "status": "resolved_scope",
+        "citation_ids": [
+          "q3_2026"
+        ]
+      },
+      {
+        "description": "Charging rollout grew while year-to-date group asset cash purchases declined",
+        "explanation": "Group spending versus network count and annual versus partial-year comparisons differ. Partner construction and investment timing are plausible contributors, but their quantitative contribution is unknown.",
+        "status": "unresolved",
+        "citation_ids": [
+          "annual2025",
+          "q3_2026",
+          "launch2026",
+          "milestone2026"
+        ]
+      },
+      {
+        "description": "Open access may increase traffic but reduce exclusivity",
+        "explanation": "Traffic effects and profit capture are different targets. Openness does not rule out economic rents, but neither scale nor third-party usage proves them.",
+        "status": "unresolved",
+        "citation_ids": [
+          "milestone2026",
+          "uk_faq",
+          "catl2026"
+        ]
+      }
+    ],
+    "next_actions": [
+      "Collect operating station-days and monthly delivered kWh by station vintage; exclude promotions when measuring paid retention.",
+      "Obtain representative operator agreements to separate capex funding, asset ownership, net service-fee share and replacement obligations.",
+      "Compare matched city/model cohorts before and after effective coverage, while checking rollout selection, parallel trends, subsidies and competitor launches.",
+      "Track 2027-2030 incremental capital returns and vehicle contribution after charging subsidies; avoid double-counting benefits."
+    ]
+  },
+  "thesis_truth_label": null
+}

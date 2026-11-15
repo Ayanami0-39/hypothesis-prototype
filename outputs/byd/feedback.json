@@ -1,0 +1,47 @@
+{
+  "case_id": "BYD_FLASH_CHARGING_2026",
+  "thesis_truth_label": null,
+  "items": [
+    {
+      "channel": "executable",
+      "target": "review_schema_and_eligible_citation_ids",
+      "label": "pass",
+      "mask": 1,
+      "scope": "Structural correctness only; does not certify factual extraction or entailment"
+    }
+  ],
+  "semantic_items": [
+    {
+      "target": "P1",
+      "candidate_label": "partial",
+      "label_source": "assistant_authored_research_draft_not_blind_agent_evaluation",
+      "mask": 0,
+      "weight": null,
+      "reason": "Requires independent adjudication"
+    },
+    {
+      "target": "P2",
+      "candidate_label": "partial",
+      "label_source": "assistant_authored_research_draft_not_blind_agent_evaluation",
+      "mask": 0,
+      "weight": null,
+      "reason": "Requires independent adjudication"
+    },
+    {
+      "target": "P3",
+      "candidate_label": "unresolved",
+      "label_source": "assistant_authored_research_draft_not_blind_agent_evaluation",
+      "mask": 0,
+      "weight": null,
+      "reason": "Requires independent adjudication"
+    },
+    {
+      "target": "P4",
+      "candidate_label": "unresolved",
+      "label_source": "assistant_authored_research_draft_not_blind_agent_evaluation",
+      "mask": 0,
+      "weight": null,
+      "reason": "Requires independent adjudication"
+    }
+  ]
+}
